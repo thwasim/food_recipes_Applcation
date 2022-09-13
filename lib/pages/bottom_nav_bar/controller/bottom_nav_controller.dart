@@ -7,7 +7,7 @@ import 'package:food_recipes/pages/profile/view/profile.dart';
 
 class BottomNavController with ChangeNotifier {
 
-     int selectedIndex = 0;
+  int selectedIndex = 0;
   int currentIndex = 0;
 
   List<IconData> data = [
@@ -23,7 +23,9 @@ class BottomNavController with ChangeNotifier {
     const ProfileScreen(),
   ];
 
-   selectecdIndexUpdate () {
-    //  selectedIndex = i;
+   selectecdIndexUpdate (int index) {
+    selectedIndex = index;
+    currentIndex = index;
+    notifyListeners();
    }
 }

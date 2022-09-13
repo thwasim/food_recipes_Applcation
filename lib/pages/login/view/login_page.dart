@@ -10,19 +10,21 @@ class LoginScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    // context.read<LoginCntroller>().checkuserloggedin(context);
+    final controller = context.read<LoginCntroller>();
     return Container(
       height: double.infinity,
       width: double.infinity,
       decoration: const BoxDecoration(
         image: DecorationImage(
-            image: AssetImage("assets/bea.jpg"),fit: BoxFit.fill),
+            image: AssetImage("assets/bea.jpg"), fit: BoxFit.fill),
       ),
       child: Scaffold(
         backgroundColor: Colors.transparent,
         body: Consumer<LoginCntroller>(builder: (context, val, child) {
           return SingleChildScrollView(
             child: Form(
-              key: context.watch<LoginCntroller>().formKey,
+              key: controller.formKey,
               child: Column(
                 children: [
                   SizedBox(
@@ -59,9 +61,7 @@ class LoginScreen extends StatelessWidget {
                               Icons.email,
                               color: Colors.black,
                             ),
-                            controller: context
-                                .watch<LoginCntroller>()
-                                .emailController),
+                            controller: controller.emailController),
                         Textfields(
                             hint: 'Password',
                             validator: (value) => val.passwords(value),
@@ -69,9 +69,7 @@ class LoginScreen extends StatelessWidget {
                               Icons.vpn_key,
                               color: Colors.black,
                             ),
-                            controller: context
-                                .watch<LoginCntroller>()
-                                .passwordController),
+                            controller: controller.passwordController),
                         Padding(
                           padding: const EdgeInsets.all(10.0),
                           child: Material(
@@ -83,12 +81,12 @@ class LoginScreen extends StatelessWidget {
                                   const EdgeInsets.fromLTRB(30, 15, 30, 15),
                               minWidth: MediaQuery.of(context).size.width * 0.8,
                               onPressed: () {
-                                if (context
-                                    .read<LoginCntroller>().formKey.currentState!
+                                if (controller.formKey.currentState!
                                     .validate()) {
-                                  context.read<LoginCntroller>().signIn(
-                                   context.read<LoginCntroller>().emailController.text,
-                                   context.read<LoginCntroller>().passwordController.text,context);
+                                  controller.signIn(
+                                      controller.emailController.text,
+                                      controller.passwordController.text,
+                                      context);
                                 }
                               },
                               child: const Text('Login',
@@ -120,7 +118,7 @@ class LoginScreen extends StatelessWidget {
                                 ..onTap = () {
                                   Navigator.of(context).pushReplacement(
                                       MaterialPageRoute(
-                                          builder: (ctx) =>const SignUp()));
+                                          builder: (ctx) => const SignUp()));
                                 })
                         ]),
                   ),

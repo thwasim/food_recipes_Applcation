@@ -4,10 +4,13 @@ import 'package:food_recipes/pages/signup/controller/signupcontroller.dart';
 import 'package:provider/provider.dart';
 
 class Fields extends StatelessWidget {
-  const Fields({Key? key}) : super(key: key);
+ const  Fields({Key? key}) : super(key: key);
+
+  
 
   @override
   Widget build(BuildContext context) {
+    final controller = context.read<SignUpController>();
     return Consumer<SignUpController>(
       builder: (context, val, child) {
         return Column(children: [
@@ -21,7 +24,7 @@ class Fields extends StatelessWidget {
                 Icons.person,
                 color: Colors.black,
               ),
-              controller: context.watch<SignUpController>().nameController),
+              controller: controller.nameController),
           Textfields(
               hint: 'Email',
               validator: (value) => val.email(value),
@@ -29,7 +32,7 @@ class Fields extends StatelessWidget {
                 Icons.email,
                 color: Colors.black,
               ),
-              controller: context.watch<SignUpController>().emailController),
+              controller: controller.emailController),
           Textfields(
               hint: 'Password',
               validator: (value) => val.password(value),
@@ -37,7 +40,7 @@ class Fields extends StatelessWidget {
                 Icons.vpn_key,
                 color: Colors.black,
               ),
-              controller: context.watch<SignUpController>().passwordController),
+              controller: controller.passwordController),
           Textfields(
               hint: 'Conform Password',
               validator: (value) => val.confirmpasswords(value),
@@ -45,8 +48,7 @@ class Fields extends StatelessWidget {
                 Icons.lock,
                 color: Colors.black,
               ),
-              controller:
-                  context.watch<SignUpController>().confrompasswordController),
+              controller: controller.confrompasswordController),
           SizedBox(height: MediaQuery.of(context).size.height * 0.02),
         ]);
       },

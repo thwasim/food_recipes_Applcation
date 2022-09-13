@@ -6,12 +6,11 @@ import 'package:food_recipes/pages/signup/view/fields.dart';
 import 'package:provider/provider.dart';
 
 class SignUp extends StatelessWidget {
- const SignUp({Key? key}) : super(key: key);
- 
-
+  const SignUp({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    final controller = context.read<SignUpController>();
     return Container(
       height: double.infinity,
       width: double.infinity,
@@ -20,10 +19,9 @@ class SignUp extends StatelessWidget {
             image: AssetImage("assets/b2.jpg"), fit: BoxFit.cover),
       ),
       child: Scaffold(
-        backgroundColor: Colors.transparent,
         body: SingleChildScrollView(
           child: Form(
-            key: context.read<SignUpController>().formkey,
+            key: controller.formkey,
             child: Column(
               children: [
                 SizedBox(
@@ -53,7 +51,7 @@ class SignUp extends StatelessWidget {
                         const Fields(),
                         Padding(
                           padding: const EdgeInsets.all(10.0),
-                           child: Material(
+                          child: Material(
                             elevation: 5,
                             borderRadius: BorderRadius.circular(50),
                             color: const Color.fromARGB(255, 106, 232, 222),
@@ -62,10 +60,12 @@ class SignUp extends StatelessWidget {
                                   const EdgeInsets.fromLTRB(30, 15, 30, 15),
                               minWidth: MediaQuery.of(context).size.width * 0.8,
                               onPressed: () {
-                                if (context.read<SignUpController>().formkey.currentState!.validate()) {
-                                    context.read<SignUpController>().signUp(
-                                      context.read<SignUpController>().emailController.text,
-                                     context.read<SignUpController>().passwordController.text, context);
+                                if (controller.formkey.currentState!
+                                    .validate()) {
+                                  controller.signUp(
+                                      controller.emailController.text,
+                                      controller.passwordController.text,
+                                      context);
                                 }
                               },
                               child: const Text('Sign Up',
@@ -98,7 +98,7 @@ class SignUp extends StatelessWidget {
                               ..onTap = () {
                                 Navigator.of(context).pushReplacement(
                                     MaterialPageRoute(
-                                        builder: (ctx) =>const LoginScreen()));
+                                        builder: (ctx) => const LoginScreen()));
                               })
                       ]),
                 ),

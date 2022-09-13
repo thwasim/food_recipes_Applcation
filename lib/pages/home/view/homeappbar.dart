@@ -22,7 +22,7 @@ class CustomAppBar extends StatelessWidget {
       clipBehavior: Clip.none,
       children: [
         Container(
-          color: const Color.fromARGB(255, 20, 163, 134),
+          color: const Color.fromARGB(255, 150, 244, 226),
           width: double.infinity,
           height: MediaQuery.of(context).size.height * 0.32,
           child: Column(children: [
@@ -51,11 +51,10 @@ class CustomAppBar extends StatelessWidget {
           ]),
         ),
         Positioned(
-          bottom: -50,
+          bottom: -60,
           child: SizedBox(
             height: 100,
             child: ListView.builder(
-              physics: const ClampingScrollPhysics(),
               scrollDirection: Axis.horizontal,
               shrinkWrap: true,
               itemCount: 4,
@@ -63,7 +62,7 @@ class CustomAppBar extends StatelessWidget {
                 return GestureDetector(
                   onTap: () {},
                   child: Padding(
-                    padding: const EdgeInsets.only(left: 10),
+                    padding: const EdgeInsets.only(left: 5,right: 5),
                     child: Container(
                       width: 90,
                       height: 90,

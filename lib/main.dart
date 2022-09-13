@@ -3,10 +3,12 @@ import 'package:flutter/material.dart';
 import 'package:food_recipes/pages/bottom_nav_bar/controller/bottom_nav_controller.dart';
 import 'package:food_recipes/pages/home/controller/homecontroller.dart';
 import 'package:food_recipes/pages/login/controller/logincontroller.dart';
-import 'package:food_recipes/pages/login/view/login_page.dart';
 import 'package:food_recipes/pages/signup/controller/signupcontroller.dart';
+import 'package:food_recipes/pages/splash/controller/splash_controller.dart';
+import 'package:food_recipes/pages/splash/view/splash_screen.dart';
 import 'package:provider/provider.dart';
 
+  const savekey = 'UserloggedIn';
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
@@ -17,6 +19,7 @@ Future<void> main() async {
        ChangeNotifierProvider(create: (_)=>SignUpController()),
        ChangeNotifierProvider(create: (_)=>HomeController()),
        ChangeNotifierProvider(create: (_)=>BottomNavController()),
+       ChangeNotifierProvider(create: (_)=>Splashcontroller())
       ],
       child: const MyApp(),
     ),
@@ -32,7 +35,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home:const LoginScreen(),
+      home:const Screensplash(),
     );
   }
 }

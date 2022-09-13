@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:food_recipes/pages/home/view/homeappbar.dart';
-
 import '../../recipesdetalis/view/recipesdetalis.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -14,7 +13,7 @@ class HomeScreen extends StatelessWidget {
         children: [
           CustomAppBar(),
           SizedBox(
-            height: MediaQuery.of(context).size.height * 0.06,
+            height: MediaQuery.of(context).size.height * 0.07,
           ),
           Expanded(
             child: Padding(
@@ -25,7 +24,7 @@ class HomeScreen extends StatelessWidget {
                       mainAxisExtent: 180,
                       crossAxisSpacing: 20,
                       mainAxisSpacing: 20),
-                  itemCount: 10,
+                  itemCount: 100,
                   itemBuilder: (BuildContext context, int index) {
                     return GestureDetector(
                       onTap: () {
@@ -33,7 +32,7 @@ class HomeScreen extends StatelessWidget {
                             builder: (ctx) => const RecipesDetailsScreen()));
                       },
                       child: Card(
-                        color: const Color.fromARGB(255, 20, 163, 134),
+                        color: const Color.fromARGB(255, 150, 244, 226),
                         shape: const RoundedRectangleBorder(
                             borderRadius:
                                 BorderRadius.all(Radius.circular(30))),
@@ -54,11 +53,11 @@ class HomeScreen extends StatelessWidget {
                                       topRight: Radius.circular(30))),
                             ),
                             const Text(
-                              "16",
+                              "Food Name",
                               style: TextStyle(
                                   fontSize: 18,
                                   fontWeight: FontWeight.bold,
-                                  color: Colors.white),
+                                  color: Colors.black),
                             ),
                           ],
                         ),
