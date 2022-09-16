@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:food_recipes/pages/profile/controller/profilecontroller.dart';
 import 'package:provider/provider.dart';
 import '../controller/addrecipescontroller.dart';
 
@@ -13,7 +14,7 @@ class CameraGallery {
           child: Container(
             decoration: const BoxDecoration(
               borderRadius: BorderRadius.all(Radius.circular(70)),
-              color: Color(0xFFFAD0C9),
+              color: Color.fromARGB(255, 150, 244, 226),
             ),
             width: double.infinity,
             height: MediaQuery.of(context).size.height * 0.16,
@@ -34,12 +35,12 @@ class CameraGallery {
                   children: [
                     TextButton.icon(
                       onPressed: () {
-                        context.read<AddRecipesController>().takeCamera();
+                        context.read<ProfileController>().takeCamera(context);
                       },
                       icon: const Icon(Icons.camera, color: Colors.black),
                       label: const Text(
                         'Camera',
-                        style: TextStyle(color: Colors.white),
+                        style: TextStyle(color: Colors.black),
                       ),
                     ),
                     const SizedBox(
@@ -47,7 +48,7 @@ class CameraGallery {
                     ),
                     TextButton.icon(
                         onPressed: () {
-                          context.read<AddRecipesController>().takeGallery();
+                          context.read<ProfileController>().takeGallery(context);
                         },
                         icon: const Icon(
                           Icons.image,
@@ -55,7 +56,7 @@ class CameraGallery {
                         ),
                         label: const Text(
                           'Gallery',
-                          style: TextStyle(color: Colors.white),
+                          style: TextStyle(color: Colors.black),
                         )),
                   ],
                 ),

@@ -3,6 +3,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:food_recipes/pages/bottom_nav_bar/view/bottom.dart';
+import 'package:food_recipes/pages/profile/model/profilemodel.dart';
 import 'package:food_recipes/pages/signup/model/signupmodel.dart';
 
 class SignUpController with ChangeNotifier {
@@ -84,6 +85,7 @@ class SignUpController with ChangeNotifier {
     userModel.uid = user.uid;
     userModel.fullname = nameController.text;
     userModel.password = passwordController.text;
+  
 
     await firebaseFirestore
         .collection(user.email.toString())

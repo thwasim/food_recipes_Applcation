@@ -42,7 +42,7 @@ class BottomNav extends StatelessWidget {
                     controller.selectecdIndexUpdate(index);
                   },
                   child: AnimatedContainer(
-                    duration: const Duration(milliseconds: 150),
+                    duration: const Duration(milliseconds: 300),
                     width: MediaQuery.of(context).size.height * 0.057,
                     decoration: BoxDecoration(
                       border: index == controllerwatch.selectedIndex

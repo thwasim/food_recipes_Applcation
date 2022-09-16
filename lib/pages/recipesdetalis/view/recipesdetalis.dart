@@ -1,3 +1,4 @@
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:food_recipes/pages/recipesdetalis/model/recipeslistmodel.dart';
 import 'package:food_recipes/pages/recipesdetalis/view/cardinside.dart';
@@ -66,7 +67,7 @@ class RecipesDetailsScreen extends StatelessWidget {
                     decoration: BoxDecoration(
                         color: const Color.fromARGB(255, 150, 244, 226),
                         borderRadius: BorderRadius.circular(30)),
-                    child:const  CardInside(),
+                    child: const CardInside(),
                   )),
             ],
           ),
@@ -90,12 +91,44 @@ class RecipesDetailsScreen extends StatelessWidget {
               ],
             ),
           ),
-          Padding(
-            padding: const EdgeInsets.only(left: 16),
-            child: Column(
-              children: buildRequirements(),
-            ),
-          ),
+          ListView.builder(
+              physics: const NeverScrollableScrollPhysics(),
+              shrinkWrap: true,
+              padding: EdgeInsets.zero,
+              itemCount: 4,
+              itemBuilder: (BuildContext context, int index) {
+                return Container(
+                  margin: const EdgeInsets.symmetric(vertical: 8),
+                  child: Padding(
+                    padding: const EdgeInsets.only(left: 20),
+                    child: Row(
+                      children: [
+                        Container(
+                          width: 6,
+                          height: 6,
+                          decoration: const BoxDecoration(
+                            color: Colors.black,
+                            shape: BoxShape.circle,
+                          ),
+                        ),
+                        const SizedBox(
+                          width: 16,
+                        ),
+                        const Flexible(
+                          child: Text(
+                            "requirement",
+                            style: TextStyle(
+                              fontSize: 16,
+                              fontWeight: FontWeight.w400,
+                              color: Colors.black,
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                );
+              }),
           SizedBox(
             height: MediaQuery.of(context).size.height * 0.03,
           ),
@@ -129,44 +162,4 @@ class RecipesDetailsScreen extends StatelessWidget {
       ),
     )));
   }
-}
-
-List<Widget> buildRequirements() {
-  List<Widget> list = [];
-  for (var i = 0; i < getJobsRequirements().length; i++) {
-    list.add(buildRequirement(getJobsRequirements()[i]));
-  }
-  return list;
-}
-
-Widget buildRequirement(String requirement) {
-  return Container(
-    margin: const EdgeInsets.symmetric(vertical: 8),
-    child: Row(
-      children: [
-        Container(
-          width: 6,
-          height: 6,
-          decoration: const BoxDecoration(
-            // image: DecorationImage(image: NetworkImage("https://i.stack.imgur.com/KoIlW.jpg"))
-            color: Colors.black,
-            shape: BoxShape.circle,
-          ),
-        ),
-        const SizedBox(
-          width: 16,
-        ),
-        Flexible(
-          child: Text(
-            requirement,
-            style: const TextStyle(
-              fontSize: 16,
-              fontWeight: FontWeight.w400,
-              color: Colors.black,
-            ),
-          ),
-        ),
-      ],
-    ),
-  );
 }

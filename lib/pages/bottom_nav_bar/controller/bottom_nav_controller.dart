@@ -20,7 +20,7 @@ class BottomNavController with ChangeNotifier {
     const HomeScreen(),
     const AddRecipesScreen(),
     const FavouriteScreen(),
-    const ProfileScreen(),
+     ProfileScreen(),
   ];
 
    selectecdIndexUpdate (int index) {

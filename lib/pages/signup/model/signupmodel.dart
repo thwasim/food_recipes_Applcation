@@ -3,8 +3,9 @@ class Usermodel {
   String? email;
   String? fullname;
   String? password;
+  String? profileimage;
 
-  Usermodel({this.uid = '', this.email, this.fullname,this.password});
+  Usermodel({this.uid = '', this.email, this.fullname,this.password,this.profileimage});
 
   // receiving  data from server
   factory Usermodel.fromMap(map) {

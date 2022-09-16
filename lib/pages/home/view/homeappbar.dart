@@ -25,7 +25,8 @@ class CustomAppBar extends StatelessWidget {
           color: const Color.fromARGB(255, 150, 244, 226),
           width: double.infinity,
           height: MediaQuery.of(context).size.height * 0.32,
-          child: Column(children: [
+          child: Column(
+            children: [
             Padding(
               padding: const EdgeInsets.only(top: 40, left: 30, right: 30),
               child: Column(
@@ -70,7 +71,7 @@ class CustomAppBar extends StatelessWidget {
                         borderRadius:
                             const BorderRadius.all(Radius.circular(20)),
                         boxShadow: const [
-                          BoxShadow(color: Colors.transparent, spreadRadius: 4),
+                          BoxShadow(color: Color.fromARGB(0, 6, 4, 4), spreadRadius: 4),
                         ],
                         image: DecorationImage(
                           image: NetworkImage(images[index]),

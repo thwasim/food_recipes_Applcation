@@ -6,7 +6,8 @@ class AddRecipesScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.blue,
+      appBar: AppBar(),
+      // body: ,
     );
   }
 }
