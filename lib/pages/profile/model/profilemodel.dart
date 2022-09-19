@@ -3,19 +3,14 @@ class Profilemodel {
 
   Profilemodel({this.image});
 
-   // receiving  data from server
-  
-    Map<String, dynamic> toMap() {
-    return {
-      "image" : image
-    };
+  // sending data to our server
+  Map<String, dynamic> toMap() {
+    return {"image": image};
   }
 
+// receiving  data from server
   factory Profilemodel.fromMap(map) {
-    return Profilemodel(
-      image:map['image']
-    );
+    return Profilemodel(image: map['image']);
   }
-  // sending data to our server
- 
 }
+

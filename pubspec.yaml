@@ -35,6 +35,7 @@ dependencies:
   flutter:
     sdk: flutter
   fluttertoast: ^8.0.9
+  google_sign_in: ^5.4.1
   image_picker: ^0.8.5+3
   provider: ^6.0.3
   shared_preferences: ^2.0.15

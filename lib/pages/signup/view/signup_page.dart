@@ -38,10 +38,10 @@ class SignUp extends StatelessWidget {
                   ],
                 ),
                 SizedBox(
-                  height: MediaQuery.of(context).size.height * 0.1,
+                  height: MediaQuery.of(context).size.height * 0.01,
                 ),
                 Container(
-                    height: MediaQuery.of(context).size.height * 0.53,
+                    height: MediaQuery.of(context).size.height * 0.66,
                     width: MediaQuery.of(context).size.width * 0.9,
                     decoration: BoxDecoration(
                         color: Colors.black54,
@@ -56,8 +56,7 @@ class SignUp extends StatelessWidget {
                             borderRadius: BorderRadius.circular(50),
                             color: const Color.fromARGB(255, 106, 232, 222),
                             child: MaterialButton(
-                              padding:
-                                  const EdgeInsets.fromLTRB(30, 15, 30, 15),
+                              padding:const EdgeInsets.fromLTRB(30, 15, 30, 15),
                               minWidth: MediaQuery.of(context).size.width * 0.8,
                               onPressed: () {
                                 if (controller.formkey.currentState!
@@ -75,6 +74,37 @@ class SignUp extends StatelessWidget {
                                       color: Colors.black,
                                       fontWeight: FontWeight.bold)),
                             ),
+                          ),
+                        ),
+                       const Text("Or",style: TextStyle(fontSize:17,fontWeight: FontWeight.bold),),
+                        Padding(
+                          padding: const EdgeInsets.all(17.0),
+                          child: Material(
+                            elevation: 5,
+                            borderRadius: BorderRadius.circular(50),
+                            color: const Color.fromARGB(255, 106, 232, 222),
+                            child: MaterialButton(
+                                padding:
+                                    const EdgeInsets.fromLTRB(20, 9, 30, 9),
+                                minWidth:
+                                    MediaQuery.of(context).size.width * 0.8,
+                                onPressed: () {},
+                                child: Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceEvenly,
+                                  children: [
+                                    CircleAvatar(
+                                      backgroundColor: Colors.transparent,
+                                      child: Image.network(
+                                          'https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Google_%22G%22_Logo.svg/2048px-Google_%22G%22_Logo.svg.png'),
+                                    ),
+                                    const Text(
+                                      'Sign Up With Google',
+                                      style: TextStyle(
+                                          fontWeight: FontWeight.bold),
+                                    )
+                                  ],
+                                )),
                           ),
                         ),
                       ],

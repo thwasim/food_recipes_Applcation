@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:food_recipes/pages/profile/controller/profilecontroller.dart';
 import 'package:provider/provider.dart';
-import '../controller/addrecipescontroller.dart';
 
 class CameraGallery {
   static showBottom(BuildContext context) {

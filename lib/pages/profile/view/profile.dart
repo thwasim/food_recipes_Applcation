@@ -7,7 +7,7 @@ import 'package:food_recipes/pages/profile/view/customs.dart';
 import 'package:provider/provider.dart';
 
 class ProfileScreen extends StatelessWidget {
-  const ProfileScreen({Key? key,this.profile}) : super(key: key);
+  const ProfileScreen({Key? key, this.profile}) : super(key: key);
   final Profilemodel? profile;
   @override
   Widget build(BuildContext context) {

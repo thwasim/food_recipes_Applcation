@@ -25,8 +25,7 @@ class CustomAppBar extends StatelessWidget {
           color: const Color.fromARGB(255, 150, 244, 226),
           width: double.infinity,
           height: MediaQuery.of(context).size.height * 0.32,
-          child: Column(
-            children: [
+          child: Column(children: [
             Padding(
               padding: const EdgeInsets.only(top: 40, left: 30, right: 30),
               child: Column(
@@ -63,7 +62,7 @@ class CustomAppBar extends StatelessWidget {
                 return GestureDetector(
                   onTap: () {},
                   child: Padding(
-                    padding: const EdgeInsets.only(left: 5,right: 5),
+                    padding: const EdgeInsets.only(left: 5, right: 5),
                     child: Container(
                       width: 90,
                       height: 90,
@@ -71,7 +70,9 @@ class CustomAppBar extends StatelessWidget {
                         borderRadius:
                             const BorderRadius.all(Radius.circular(20)),
                         boxShadow: const [
-                          BoxShadow(color: Color.fromARGB(0, 6, 4, 4), spreadRadius: 4),
+                          BoxShadow(
+                              color: Color.fromARGB(0, 6, 4, 4),
+                              spreadRadius: 4),
                         ],
                         image: DecorationImage(
                           image: NetworkImage(images[index]),
@@ -94,6 +95,39 @@ class CustomAppBar extends StatelessWidget {
             ),
           ),
         )
+      ],
+    );
+  }
+
+  Widget buildChip(String label, Color color) {
+    return Chip(
+      labelPadding: const EdgeInsets.all(2.0),
+      avatar: CircleAvatar(
+        backgroundColor: Colors.white70,
+        child: Text(label[0].toUpperCase()),
+      ),
+      label: Text(
+        label,
+        style: const TextStyle(
+          color: Colors.white,
+        ),
+      ),
+      backgroundColor: color,
+      elevation: 6.0,
+      shadowColor: Colors.grey[60],
+      padding: const EdgeInsets.all(8.0),
+    );
+  }
+
+  chipList() {
+    return Wrap(
+      spacing: 6.0,
+      runSpacing: 6.0,
+      children: <Widget>[
+        buildChip('Break Fast', const Color(0xFFff6666)),
+        buildChip('Lunch', const Color(0xFF007f5c)),
+        buildChip('Snacks', const Color(0xFF5f65d3)),
+        buildChip('Dinner', const Color(0xFF19ca21)),
       ],
     );
   }

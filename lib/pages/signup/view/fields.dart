@@ -22,7 +22,7 @@ class Fields extends StatelessWidget {
               validator: (value) => val.username(value),
               icon: const Icon(
                 Icons.person,
-                color: Colors.black,
+                color: Colors.white,
               ),
               controller: controller.nameController),
           Textfields(
@@ -30,7 +30,7 @@ class Fields extends StatelessWidget {
               validator: (value) => val.email(value),
               icon: const Icon(
                 Icons.email,
-                color: Colors.black,
+                color: Colors.white,
               ),
               controller: controller.emailController),
           Textfields(
@@ -38,7 +38,7 @@ class Fields extends StatelessWidget {
               validator: (value) => val.password(value),
               icon: const Icon(
                 Icons.vpn_key,
-                color: Colors.black,
+                color: Colors.white,
               ),
               controller: controller.passwordController),
           Textfields(
@@ -46,7 +46,7 @@ class Fields extends StatelessWidget {
               validator: (value) => val.confirmpasswords(value),
               icon: const Icon(
                 Icons.lock,
-                color: Colors.black,
+                color: Colors.white,
               ),
               controller: controller.confrompasswordController),
           SizedBox(height: MediaQuery.of(context).size.height * 0.02),
