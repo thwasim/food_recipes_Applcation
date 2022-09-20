@@ -1,6 +1,4 @@
-import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-import 'package:food_recipes/pages/recipesdetalis/model/recipeslistmodel.dart';
 import 'package:food_recipes/pages/recipesdetalis/view/cardinside.dart';
 
 class RecipesDetailsScreen extends StatelessWidget {

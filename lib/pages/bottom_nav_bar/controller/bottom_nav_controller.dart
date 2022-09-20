@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:food_recipes/pages/addrecipes/view/addrecipes.dart';
 import 'package:food_recipes/pages/favourite/view/favourite.dart';
@@ -6,7 +5,6 @@ import 'package:food_recipes/pages/home/view/homescreen.dart';
 import 'package:food_recipes/pages/profile/view/profile.dart';
 
 class BottomNavController with ChangeNotifier {
-
   int selectedIndex = 0;
   int currentIndex = 0;
 
@@ -18,14 +16,14 @@ class BottomNavController with ChangeNotifier {
   ];
   List<Widget> page = [
     const HomeScreen(),
-    const AddRecipesScreen(),
+    AddRecipesScreen(),
     const FavouriteScreen(),
-     ProfileScreen(),
+    const ProfileScreen(),
   ];
 
-   selectecdIndexUpdate (int index) {
+  selectecdIndexUpdate(int index) {
     selectedIndex = index;
     currentIndex = index;
     notifyListeners();
-   }
+  }
 }

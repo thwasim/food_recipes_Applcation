@@ -14,7 +14,7 @@ class BottomNav extends StatelessWidget {
         children: [
           controllerwatch.page[controllerwatch.currentIndex],
           Positioned(
-              bottom: 40, left: 40, right: 40, child: buildBottom(context))
+              bottom: 20, left: 40, right: 40, child: buildBottom(context))
         ],
       ),
     );

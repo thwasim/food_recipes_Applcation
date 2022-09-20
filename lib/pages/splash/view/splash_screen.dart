@@ -1,7 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:food_recipes/pages/bottom_nav_bar/view/bottom.dart';
-import 'package:food_recipes/pages/home/view/homescreen.dart';
 import 'package:food_recipes/pages/login/view/login_page.dart';
 import 'package:food_recipes/pages/splash/controller/splash_controller.dart';
 import 'package:provider/provider.dart';
@@ -42,10 +41,6 @@ class Screensplash extends StatelessWidget {
                       fit: BoxFit.cover),
                 )),
             SizedBox(
-                width: 100,
-                height: 100,
-                child: Image.asset("assets/splach.gif")),
-            SizedBox(
               height: MediaQuery.of(context).size.height * 0.01,
             ),
             SizedBox(
@@ -63,14 +58,13 @@ class CheckUser extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return StreamBuilder(
-      stream: FirebaseAuth.instance.authStateChanges(),
-      builder: (context, snapshot) {
-        if (snapshot.hasData) {
-          return const BottomNav();
-        }else {
-          return const LoginScreen();
-        }
-      }
-       );
+        stream: FirebaseAuth.instance.authStateChanges(),
+        builder: (context, snapshot) {
+          if (snapshot.hasData) {
+            return const BottomNav();
+          } else {
+            return const LoginScreen();
+          }
+        });
   }
 }

@@ -4,11 +4,11 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
-import 'package:food_recipes/pages/firebase/uploadimagefirebase.dart';
-import 'package:food_recipes/pages/login/view/login_page.dart';
-import 'package:food_recipes/pages/profile/model/profilemodel.dart';
-import 'package:food_recipes/pages/signup/model/signupmodel.dart';
 import 'package:image_picker/image_picker.dart';
+import '../../firebase/uploadimagefirebase.dart';
+import '../../login/view/login_page.dart';
+import '../../signup/model/signupmodel.dart';
+import '../model/profilemodel.dart';
 
 class ProfileController with ChangeNotifier {
   File? file;
@@ -84,6 +84,7 @@ class ProfileController with ChangeNotifier {
     Navigator.of(context).pop();
   }
 
+//-----------------                 ----------------------//
   updateimage() async {
     final doc = FirebaseFirestore.instance
         .collection(FirebaseAuth.instance.currentUser!.email!)
@@ -92,7 +93,7 @@ class ProfileController with ChangeNotifier {
     notifyListeners();
   }
 
-//----------logout function in firebase---------------------//
+// ----------logout function in firebase---------------------//
 
   logout(context) async {
     await FirebaseAuth.instance.signOut();
