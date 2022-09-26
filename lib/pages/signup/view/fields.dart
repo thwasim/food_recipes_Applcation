@@ -4,9 +4,7 @@ import 'package:food_recipes/pages/signup/controller/signupcontroller.dart';
 import 'package:provider/provider.dart';
 
 class Fields extends StatelessWidget {
- const  Fields({Key? key}) : super(key: key);
-
-  
+  const Fields({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

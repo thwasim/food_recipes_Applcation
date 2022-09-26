@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:food_recipes/pages/splash/view/splash_screen.dart';
 
@@ -8,7 +7,4 @@ class Splashcontroller with ChangeNotifier {
     Navigator.of(context).pushReplacement(
         MaterialPageRoute(builder: (ctx) => const CheckUser()));
   }
-
-   
-  }
-
+}

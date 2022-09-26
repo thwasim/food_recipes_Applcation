@@ -5,7 +5,12 @@ class Usermodel {
   String? password;
   String? profileimage;
 
-  Usermodel({this.uid = '', this.email, this.fullname,this.password,this.profileimage});
+  Usermodel(
+      {this.uid = '',
+      this.email,
+      this.fullname,
+      this.password,
+      this.profileimage});
 
   // receiving  data from server
   factory Usermodel.fromMap(map) {
@@ -23,7 +28,7 @@ class Usermodel {
       'uid': uid,
       'email': email,
       'full name': fullname,
-      'password' : password,
+      'password': password,
     };
   }
 }

@@ -5,14 +5,12 @@ import 'package:provider/provider.dart';
 import '../../signup/view/signup_page.dart';
 import '../controller/logincontroller.dart';
 
-
 class LoginScreen extends StatelessWidget {
   const LoginScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    // GoogleSignIn googleSignIn = GoogleSignIn();
-    final controller = context.read<LoginCntroller>();
+    final controllerread = context.read<LoginCntroller>();
     return Container(
       height: double.infinity,
       width: double.infinity,
@@ -25,7 +23,7 @@ class LoginScreen extends StatelessWidget {
         body: Consumer<LoginCntroller>(builder: (context, val, child) {
           return SingleChildScrollView(
             child: Form(
-              key: controller.formKey,
+              key: controllerread.formKey,
               child: Column(
                 children: [
                   SizedBox(
@@ -42,10 +40,10 @@ class LoginScreen extends StatelessWidget {
                     ],
                   ),
                   SizedBox(
-                    height: MediaQuery.of(context).size.height * 0.03,
+                    height: MediaQuery.of(context).size.height * 0.06,
                   ),
                   Container(
-                    height: MediaQuery.of(context).size.height * 0.46,
+                    height: MediaQuery.of(context).size.height * 0.4,
                     width: MediaQuery.of(context).size.width * 0.9,
                     decoration: BoxDecoration(
                         color: Colors.white54,
@@ -62,7 +60,7 @@ class LoginScreen extends StatelessWidget {
                               Icons.email,
                               color: Colors.white,
                             ),
-                            controller: controller.emailController),
+                            controller: controllerread.emailController),
                         Textfields(
                             hint: 'Password',
                             validator: (value) => val.passwords(value),
@@ -70,7 +68,7 @@ class LoginScreen extends StatelessWidget {
                               Icons.vpn_key,
                               color: Colors.white,
                             ),
-                            controller: controller.passwordController),
+                            controller: controllerread.passwordController),
                         Padding(
                           padding: const EdgeInsets.all(10.0),
                           child: Material(
@@ -82,12 +80,14 @@ class LoginScreen extends StatelessWidget {
                                   const EdgeInsets.fromLTRB(30, 15, 30, 15),
                               minWidth: MediaQuery.of(context).size.width * 0.8,
                               onPressed: () {
-                                if (controller.formKey.currentState!
+                                if (controllerread.formKey.currentState!
                                     .validate()) {
-                                  controller.signIn(
-                                      controller.emailController.text,
-                                      controller.passwordController.text,
+                                  controllerread.signIn(
+                                      controllerread.emailController.text,
+                                      controllerread.passwordController.text,
                                       context);
+                                  controllerread
+                                      .showProgressWithoutMsg(context);
                                 }
                               },
                               child: const Text('Login',
@@ -97,40 +97,6 @@ class LoginScreen extends StatelessWidget {
                                       color: Colors.black,
                                       fontWeight: FontWeight.bold)),
                             ),
-                          ),
-                        ),
-                        const Text(
-                          "Or",
-                          style: TextStyle(
-                              fontWeight: FontWeight.bold, fontSize: 17),
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.all(17.0),
-                          child: Material(
-                            elevation: 5,
-                            borderRadius: BorderRadius.circular(50),
-                            color: Colors.white,
-                            child: MaterialButton(
-                                padding: const EdgeInsets.fromLTRB(20, 9, 30, 9),
-                                minWidth:
-                                    MediaQuery.of(context).size.width * 0.8,
-                                onPressed: () {},
-                                child: Row(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceEvenly,
-                                  children: [
-                                    CircleAvatar(
-                                      backgroundColor: Colors.transparent,
-                                      child: Image.network(
-                                          'https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Google_%22G%22_Logo.svg/2048px-Google_%22G%22_Logo.svg.png'),
-                                    ),
-                                    const Text(
-                                      'Login With Google',
-                                      style: TextStyle(
-                                          fontWeight: FontWeight.bold),
-                                    )
-                                  ],
-                                )),
                           ),
                         ),
                       ],
@@ -165,59 +131,4 @@ class LoginScreen extends StatelessWidget {
       ),
     );
   }
-
-// Future<bool?> signInWithGoogle() async {
-//     try {
-//       final googleSignInAccount = await _googleSignIn.signIn();
-//       if (googleSignInAccount == null) {
-//         throw SignInWithGoogleFailure();
-//       }
-
-//       final googleSignInAuth = await googleSignInAccount.authentication;
-
-//       final credential = GoogleAuthProvider.credential(
-//         accessToken: googleSignInAuth.accessToken,
-//         idToken: googleSignInAuth.idToken,
-//       );
-
-//       final userCredential =
-//           await _firebaseAuth.signInWithCredential(credential);
-
-//       return userCredential.additionalUserInfo?.isNewUser;
-//     } on FirebaseAuthException catch (_) {
-//       throw SignInWithGoogleFailure();
-//     }
-//   }
-
-//   Future<void> signOut() async {
-//     try {
-//       await Future.wait([
-//         _firebaseAuth.signOut(),
-//         _googleSignIn.signOut(),
-//       ]);
-//     } catch (_) {
-//       throw SignOutFailure();
-//     }
-//   }
-//    final AuthenticationRepository _authenticationRepository;
-
-//   GoogleSignInController(this._authenticationRepository)
-//       : super(GoogleSignInState.initial);
-
-//   Future<void> signInWithGoogle() async {
-//     state = GoogleSignInState.loading;
-
-//     try {
-//       final isNewUser = await _authenticationRepository.signInWithGoogle();
-
-//       if (isNewUser != null && isNewUser) {
-//         // white to database
-//         // call cloud firestore repository
-//       }
-
-//       state = GoogleSignInState.success;
-//     } on SignInWithGoogleFailure catch (_) {
-//       state = GoogleSignInState.error;
-//     }
-//   }
 }

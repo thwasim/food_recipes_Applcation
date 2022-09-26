@@ -4,6 +4,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
+import 'package:food_recipes/pages/bottom_nav_bar/controller/bottom_nav_controller.dart';
 import 'package:image_picker/image_picker.dart';
 import '../../firebase/uploadimagefirebase.dart';
 import '../../login/view/login_page.dart';
@@ -95,11 +96,15 @@ class ProfileController with ChangeNotifier {
 
 // ----------logout function in firebase---------------------//
 
-  logout(context) async {
-    await FirebaseAuth.instance.signOut();
-    Navigator.of(context).pushReplacement(
-        MaterialPageRoute(builder: (ctx) => const LoginScreen()));
+  Future<bool> logout() async {
+    try {
+      await FirebaseAuth.instance.signOut();
+      return true;
+    } catch (e) {
+      return false;
+    }
   }
+
 
 //----------------image get by profilemodel class------------//
 

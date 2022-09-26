@@ -34,15 +34,15 @@ class CustomAppBar extends StatelessWidget {
         Container(
           color: const Color.fromARGB(255, 150, 244, 226),
           width: double.infinity,
-          height: MediaQuery.of(context).size.height * 0.32,
+          height: MediaQuery.of(context).size.height * 0.3,
           child: Column(children: [
             Padding(
-              padding: const EdgeInsets.only(top: 40, left: 30, right: 30),
+              padding: const EdgeInsets.only(top: 30, left: 30, right: 30),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   const Padding(
-                    padding: EdgeInsets.only(bottom: 20, top: 10),
+                    padding: EdgeInsets.only(bottom: 20, top: 2),
                     child: Text(
                       'Find Best Recipes\n  For Cooking',
                       style: TextStyle(
@@ -52,16 +52,13 @@ class CustomAppBar extends StatelessWidget {
                     ),
                   ),
                   searchForJobs(context),
-                  SizedBox(
-                    height: MediaQuery.of(context).size.height * 0.01,
-                  ),
                 ],
               ),
             ),
           ]),
         ),
         Positioned(
-          bottom: -72,
+          bottom: -75,
           child: SizedBox(
             width: MediaQuery.of(context).size.width,
             height: 100,

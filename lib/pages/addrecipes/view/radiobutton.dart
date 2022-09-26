@@ -20,7 +20,7 @@ class _RadioButtonState extends State<RadioButton> {
                 children: const [
                   Text(
                     "Selete Food Type",
-                    style: TextStyle(fontWeight: FontWeight.bold, fontSize: 23),
+                    style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
                   )
                 ],
               ),

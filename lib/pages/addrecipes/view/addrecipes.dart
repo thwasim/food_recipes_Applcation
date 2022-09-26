@@ -41,19 +41,9 @@ class AddRecipesScreen extends StatelessWidget {
                       textStyle: const TextStyle(
                           fontSize: 14, fontWeight: FontWeight.bold)),
                   onPressed: () {},
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceAround,
-                    children: const [
-                      Text(
-                        "Add Image",
-                        style: TextStyle(color: Colors.black),
-                      ),
-                      Icon(
-                        Icons.add,
-                        size: 23,
-                        color: Colors.black,
-                      ),
-                    ],
+                  child: const Text(
+                    "Add Image",
+                    style: TextStyle(color: Colors.black),
                   )),
             ),
             Padding(
@@ -62,7 +52,7 @@ class AddRecipesScreen extends StatelessWidget {
                 children: const [
                   Text(
                     "Add Ingredients",
-                    style: TextStyle(fontWeight: FontWeight.bold, fontSize: 23),
+                    style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
                   )
                 ],
               ),
@@ -85,7 +75,7 @@ class AddRecipesScreen extends StatelessWidget {
                         decoration: InputDecoration(
                             hintText: "Add Ingredients",
                             hintStyle: const TextStyle(
-                                fontSize: 17, fontWeight: FontWeight.w600),
+                                fontSize: 15, fontWeight: FontWeight.w600),
                             border: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(30),
                             )),
@@ -123,7 +113,7 @@ class AddRecipesScreen extends StatelessWidget {
                 children: const [
                   Text(
                     "How To Make",
-                    style: TextStyle(fontWeight: FontWeight.bold, fontSize: 23),
+                    style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
                   )
                 ],
               ),
@@ -140,11 +130,11 @@ class AddRecipesScreen extends StatelessWidget {
               child: TextFormField(
                 keyboardType: TextInputType.multiline,
                 minLines: 1,
-                maxLines: 200,
+                maxLines: 80,
                 decoration: InputDecoration(
                   hintText: "How To Make",
                   hintStyle: const TextStyle(
-                      fontWeight: FontWeight.bold, fontSize: 18),
+                      fontWeight: FontWeight.bold, fontSize: 15),
                   fillColor: const Color(0xffffffff),
                   filled: true,
                   border: OutlineInputBorder(
@@ -152,15 +142,24 @@ class AddRecipesScreen extends StatelessWidget {
                 ),
               ),
             ),
-             const TimerPickerExample(),
-             const RadioButton(),
-             Container(
-              color: Colors.red,
-              child:Padding(
-                padding: const EdgeInsets.all(28.0),
-                child: Text("   Submit   "),
+            const TimerPickerExample(),
+            const RadioButton(),
+            const SizedBox(
+              height: 30,
+            ),
+            InkWell(
+              onTap: () {
+                // Navigator.of(context).push(MaterialPageRoute(builder: (ctx)=>ExampleHome()));
+              },
+              child: Container(
+                decoration: BoxDecoration(
+                    color: Colors.red, borderRadius: BorderRadius.circular(30)),
+                child: const Padding(
+                  padding: EdgeInsets.all(28.0),
+                  child: Text("   Submit   "),
+                ),
               ),
-             ),
+            ),
             const SizedBox(
               height: 150,
             ),

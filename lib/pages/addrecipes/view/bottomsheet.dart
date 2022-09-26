@@ -31,6 +31,7 @@ class CameraGallery {
               Padding(
                 padding: const EdgeInsets.only(left: 35, right: 35),
                 child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
                     TextButton.icon(
                       onPressed: () {
@@ -42,12 +43,11 @@ class CameraGallery {
                         style: TextStyle(color: Colors.black),
                       ),
                     ),
-                    const SizedBox(
-                      width: 70,
-                    ),
                     TextButton.icon(
                         onPressed: () {
-                          context.read<ProfileController>().takeGallery(context);
+                          context
+                              .read<ProfileController>()
+                              .takeGallery(context);
                         },
                         icon: const Icon(
                           Icons.image,

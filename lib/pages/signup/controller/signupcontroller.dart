@@ -84,7 +84,6 @@ class SignUpController with ChangeNotifier {
     userModel.uid = user.uid;
     userModel.fullname = nameController.text;
     userModel.password = passwordController.text;
-  
 
     await firebaseFirestore
         .collection(user.email.toString())

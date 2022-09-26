@@ -23,13 +23,14 @@ class CardInside extends StatelessWidget {
           height: MediaQuery.of(context).size.width * 0.02,
         ),
         Row(
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: [
             TextButton.icon(
               onPressed: () {},
               icon: const Icon(
                 Icons.alarm_add,
                 color: Colors.black,
-                size: 28,
+                size: 20,
               ),
               label: const Text(
                 'Time',
@@ -37,15 +38,12 @@ class CardInside extends StatelessWidget {
                     TextStyle(color: Colors.black, fontWeight: FontWeight.bold),
               ),
             ),
-            SizedBox(
-              width: MediaQuery.of(context).size.width * 0.03,
-            ),
             TextButton.icon(
               onPressed: () {},
               icon: const Icon(
                 Icons.bookmark_border_outlined,
                 color: Colors.black,
-                size: 28,
+                size: 20,
               ),
               label: const Text(
                 'Save',
@@ -53,15 +51,12 @@ class CardInside extends StatelessWidget {
                     TextStyle(color: Colors.black, fontWeight: FontWeight.bold),
               ),
             ),
-            SizedBox(
-              width: MediaQuery.of(context).size.width * 0.04,
-            ),
             TextButton.icon(
               onPressed: () {},
               icon: const Icon(
                 Icons.health_and_safety_outlined,
                 color: Colors.black,
-                size: 28,
+                size: 20,
               ),
               label: const Text(
                 'Healthy',

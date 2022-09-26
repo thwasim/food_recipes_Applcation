@@ -39,7 +39,7 @@ class HomeScreen extends StatelessWidget {
                         child: Column(
                           children: [
                             Container(
-                              height: MediaQuery.of(context).size.height * 0.16,
+                              height: MediaQuery.of(context).size.height * 0.166,
                               width: MediaQuery.of(context).size.width,
                               decoration: const BoxDecoration(
                                   color: Colors.transparent,

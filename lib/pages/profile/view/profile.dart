@@ -1,10 +1,11 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-import 'package:food_recipes/pages/addrecipes/view/bottomsheet.dart';
-import 'package:food_recipes/pages/profile/controller/profilecontroller.dart';
-import 'package:food_recipes/pages/profile/model/profilemodel.dart';
-import 'package:food_recipes/pages/profile/view/customs.dart';
+import 'package:food_recipes/pages/login/view/login_page.dart';
 import 'package:provider/provider.dart';
+import '../../addrecipes/view/bottomsheet.dart';
+import '../../bottom_nav_bar/controller/bottom_nav_controller.dart';
+import '../controller/profilecontroller.dart';
+import '../model/profilemodel.dart';
 
 class ProfileScreen extends StatelessWidget {
   const ProfileScreen({Key? key, this.profile}) : super(key: key);
@@ -12,60 +13,41 @@ class ProfileScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final controllerWatch = context.watch<ProfileController>();
+    final controllerread = context.watch<ProfileController>();
     double height = MediaQuery.of(context).size.height;
     return Stack(
       children: [
-        Container(
-          color: const Color.fromARGB(255, 150, 244, 226),
-        ),
         Scaffold(
-          backgroundColor: Colors.transparent,
+          backgroundColor: const Color.fromARGB(255, 150, 244, 226),
           body: SingleChildScrollView(
             physics: const BouncingScrollPhysics(),
             child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 73),
+              padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 63),
               child: Column(
                 children: [
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.end,
-                    children: [
-                      PopupMenuButton(
-                        splashRadius: 9000,
-                        itemBuilder: (ctx) => [
-                          FollowDetalis.buildPopupMenuItem(
-                              "Settings",
-                              Icons.settings,
-                              context.read<ProfileController>().logout(context),
-                              context),
-                          FollowDetalis.buildPopupMenuItem(
-                              "Logout", Icons.logout, null, context),
-                          FollowDetalis.buildPopupMenuItem(
-                              "Edite", Icons.edit, null, context),
-                        ],
-                        child: Container(
-                            width: MediaQuery.of(context).size.width * 0.1,
-                            height: MediaQuery.of(context).size.height * 0.049,
-                            decoration: BoxDecoration(
-                                color: Colors.black,
-                                borderRadius: BorderRadius.circular(50)),
-                            child: const Icon(
-                              Icons.settings,
-                              color: Colors.white,
-                            )),
-                      ),
-                    ],
-                  ),
                   Text(
                     'My Profile'.toUpperCase(),
                     textAlign: TextAlign.center,
                     style: const TextStyle(
                       color: Colors.black,
                       fontWeight: FontWeight.bold,
-                      fontSize: 34,
+                      fontSize: 20,
                     ),
                   ),
+                  IconButton(
+                      onPressed: () {
+                        controllerread.logout().then((value) {
+                          if (value) {
+                            context.read<BottomNavController>().selectecdIndexUpdate(0);
+                            Navigator.of(context).pushReplacement(
+                                MaterialPageRoute(
+                                    builder: (ctx) => const LoginScreen()));
+                          }
+                        });
+                      },
+                      icon: const Icon(Icons.logout)),
                   SizedBox(
-                    height: height * 0.3,
+                    height: height * 0.32,
                     child: LayoutBuilder(
                       builder: (context, constraints) {
                         double innerHeight = constraints.maxHeight;
@@ -104,13 +86,27 @@ class ProfileScreen extends StatelessWidget {
                                     ),
                                     Row(
                                       mainAxisAlignment:
-                                          MainAxisAlignment.spaceAround,
-                                      children: const [
-                                        FollowDetalis(number: 5, post: "posts"),
-                                        FollowDetalis(
-                                            number: 800, post: "Followers"),
-                                        FollowDetalis(
-                                            number: 300, post: "Following"),
+                                          MainAxisAlignment.center,
+                                      children: [
+                                        const Text(
+                                          "Email:",
+                                          style: TextStyle(
+                                              color: Color.fromRGBO(
+                                                  39, 105, 171, 1),
+                                              fontWeight: FontWeight.bold,
+                                              fontSize: 20),
+                                        ),
+                                        const SizedBox(
+                                          width: 30,
+                                        ),
+                                        Text(
+                                          "${controllerWatch.loggedInUser.email}",
+                                          style: const TextStyle(
+                                              color: Color.fromRGBO(
+                                                  39, 105, 171, 1),
+                                              fontWeight: FontWeight.bold,
+                                              fontSize: 20),
+                                        )
                                       ],
                                     )
                                   ],
@@ -118,8 +114,8 @@ class ProfileScreen extends StatelessWidget {
                               ),
                             ),
                             Positioned(
-                                top: 60,
-                                left: 160,
+                                top: MediaQuery.of(context).size.height * 0.07,
+                                left: 150,
                                 right: 0,
                                 child: IconButton(
                                     onPressed: () {
@@ -130,7 +126,7 @@ class ProfileScreen extends StatelessWidget {
                                       size: 29,
                                     ))),
                             Positioned(
-                              top: 0,
+                              top: 30,
                               left: 0,
                               right: 0,
                               child: Center(
@@ -142,7 +138,7 @@ class ProfileScreen extends StatelessWidget {
                                           ? const NetworkImage(
                                               "https://cdn.icon-icons.com/icons2/2645/PNG/512/person_circle_icon_159926.png")
                                           : NetworkImage(value.url.toString()),
-                                      radius: 65,
+                                      radius: 55,
                                     );
                                   },
                                 ),
@@ -198,7 +194,7 @@ class ProfileScreen extends StatelessWidget {
                                     const Text(
                                       "Food Name",
                                       style: TextStyle(
-                                          fontSize: 21,
+                                          fontSize: 15,
                                           fontWeight: FontWeight.bold),
                                     ),
                                   ],

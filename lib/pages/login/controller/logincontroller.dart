@@ -2,6 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:food_recipes/pages/bottom_nav_bar/view/bottom.dart';
+import 'package:future_progress_dialog/future_progress_dialog.dart';
 
 class LoginCntroller with ChangeNotifier {
   TextEditingController emailController = TextEditingController();
@@ -37,10 +38,24 @@ class LoginCntroller with ChangeNotifier {
         .then((value) => {
               Fluttertoast.showToast(msg: "Login Successful"),
               Navigator.of(context).pushReplacement(
-                  MaterialPageRoute(builder: (ctx) =>const BottomNav())),
+                  MaterialPageRoute(builder: (ctx) => const BottomNav())),
             })
         .catchError((e) {
       Fluttertoast.showToast(msg: e!.meassge);
     });
+  }
+
+  Future getFuture(context) {
+    return Future(() async {
+      await Future.delayed(const Duration(seconds: 5));
+      return Navigator.of(context)
+          .push(MaterialPageRoute(builder: (ctx) => const BottomNav()));
+    });
+  }
+
+  Future<void> showProgressWithoutMsg(context) async {
+    showDialog(
+        context: context,
+        builder: (context) => FutureProgressDialog(getFuture(context)));
   }
 }

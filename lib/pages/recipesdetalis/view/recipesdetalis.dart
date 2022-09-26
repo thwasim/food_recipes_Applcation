@@ -43,24 +43,16 @@ class RecipesDetailsScreen extends StatelessWidget {
                     onTap: () {
                       Navigator.of(context).pop();
                     },
-                    child: Container(
-                      height: 40,
-                      width: 40,
-                      decoration: BoxDecoration(
-                        color: Colors.red,
-                        borderRadius: BorderRadius.circular(40),
-                      ),
-                      child: const Icon(
-                        Icons.arrow_back_rounded,
-                        size: 30,
-                        color: Colors.white,
-                      ),
+                    child:const CircleAvatar(
+                      radius: 20,
+                      backgroundColor: Colors.white,
+                      child: Icon(Icons.arrow_back),
                     ),
                   )),
               Positioned(
                   bottom: 7,
                   child: Container(
-                    height: MediaQuery.of(context).size.height * 0.14,
+                    height: MediaQuery.of(context).size.height * 0.145,
                     width: MediaQuery.of(context).size.height * 0.38,
                     decoration: BoxDecoration(
                         color: const Color.fromARGB(255, 150, 244, 226),
